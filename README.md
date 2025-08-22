@@ -1,69 +1,75 @@
-### Описание проекта
-Проект kittygram создан для того, чтобы вы могли рассказать о своих котиках всем и каждому,
-показать его фото, рассказать о его достижениях!
+# Kittygram - социальная сеть для владельцев котиков
 
-В проекте вы можете постисть своих котиков, смотреть чужих котиков.
-Подробно рассказать о своем котике, выложить его фото, выбрать его цвет и год рождения.
-Также вы можете рассказать о его достижениях. Написать свое, или выбрать уже существующее.
+[![Django](https://img.shields.io/badge/Django-4.2-green.svg)](https://www.djangoproject.com/)
+[![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
+[![Docker](https://img.shields.io/badge/Docker-✓-blue.svg)](https://www.docker.com/)
 
+Социальная платформа для владельцев кошек, где можно делиться фотографиями и достижениями своих питомцев, а также знакомиться с другими котиками.
 
-### Стек
-```Django```
-```Python```
-```Gunicorn```
-```Nginx```
-```Docker```
+## Возможности
 
+### Основной функционал
+- Публикация фотографий и описания котиков
+- Просмотр информации о других котиках
+- Система достижений для питомцев
 
-### Как запустить проект
-```
-Клонируйте репозиторий
-Создайте и заполните .env файл
-Скачайте Docker
-sudo apt update
-sudo apt install curl
-curl -fSL https://get.docker.com -o get-docker.sh
-sudo sh ./get-docker.sh
-sudo apt-get install docker-compose-plugin;
-Перейдите в корень проекта
-sudo docker compose pull
-sudo docker compose down
-sudo docker compose up -d
-sudo docker compose exec backend python manage.py migrate
-sudo docker compose exec backend python manage.py collectstatic
-sudo docker compose exec backend cp -r /app/collect_static/. /static_backend/static/
-Скачайте Nginx
-sudo apt install nginx -y
-sudo systemctl start nginx
-sudo ufw allow 'Nginx Full'
-sudo ufw allow OpenSSH
-sudo ufw enable
-sudo nano /etc/nginx/sites-enabled/default
-Заменяем содержимое файла на это
+### Профили котиков
+- Детальная информация о каждом котике
+- Указание имени, цвета и даты рождения
+- Система достижений для питомцев
+  
 
-server {
-    listen 80;
-    server_name example.com;
-    
-    location / {
-        proxy_set_header HOST $host;
-        proxy_pass http://127.0.0.1:9000;
+## Технологический стек
 
-    }
-}
+- Django - Веб-фреймворк
+- Python - Основной язык программирования
+- Gunicorn - WSGI-сервер
+- Nginx - Веб-сервер
+- Docker - Контейнеризация приложения
+- PostgreSQL - База данных
 
-Сохраняем и закрываем файл
-sudo nginx -tsudo systemctl start nginx
+## Быстрый старт
+
+### Предварительные требования
+- Docker и Docker Compose
+- Python 3.9 или новее
+
+### Установка и запуск
+
+1. Клонируйте репозиторий:
+```bash
+git clone https://github.com/daniltivodar/drf_docker_kittygram.git
+cd kittygram
 ```
 
-### Как заполнить env
-nano .env
-SECRET_KEY = 'django-insecure-cg6*%6d51ef8f#4!r3*$vmxm4)abgjw8mo!4y-q*uq1!4$-89$'
+2. Настройте окружение:
+Создайте файл .env со следующим содержимым:
+```bash
+SECRET_KEY='your-secret-key-here'
 POSTGRES_USER=username
 POSTGRES_PASSWORD=password
 DB_HOST=db
 DB_PORT=5432
-ALLOWED_HOST=[]
+ALLOWED_HOSTS=localhost,127.0.0.1
+```
 
-###Автор
-Данил Тиводар github: ```https://github.com/daniltivodar```
+3. Запустите сервисы:
+```bash
+docker compose pull
+docker compose up -d
+```
+
+4. Примените миграции базы данных:
+```bash
+docker compose exec backend python manage.py migrate
+```
+
+5. Соберите статические файлы:
+```bash
+docker compose exec backend python manage.py collectstatic
+```
+
+## Разработчик
+
+**Данил Тиводар**  
+[GitHub Профиль](https://github.com/daniltivodar)
