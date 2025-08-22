@@ -1,5 +1,6 @@
 # Kittygram - социальная сеть для владельцев котиков
 
+![Build Status](https://github.com/daniltivodar/drf_docker_kittygram/actions/workflows/main.yml/badge.svg)
 [![Django](https://img.shields.io/badge/Django-4.2-green.svg)](https://www.djangoproject.com/)
 [![Python](https://img.shields.io/badge/Python-3.9+-blue.svg)](https://www.python.org/)
 [![Docker](https://img.shields.io/badge/Docker-✓-blue.svg)](https://www.docker.com/)
